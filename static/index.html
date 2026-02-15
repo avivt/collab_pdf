@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collaborative PDF Comments</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Collaborative PDF Comments</h1>
+      <p>Native PDF annotations compatible with Acrobat and Preview.</p>
+    </header>
+
+    <main>
+      <section class="sidebar">
+        <h2>Documents</h2>
+        <form id="upload-form">
+          <input id="file-input" type="file" accept="application/pdf" required />
+          <button type="submit">Upload PDF</button>
+        </form>
+        <ul id="documents"></ul>
+      </section>
+
+      <section class="viewer">
+        <div class="viewer-header">
+          <h2 id="doc-title">No document selected</h2>
+          <a id="download-link" target="_blank" rel="noreferrer" hidden>Open raw PDF</a>
+        </div>
+        <p class="viewer-help">Click directly on a page to place your next comment marker.</p>
+        <div id="pdf-container"></div>
+      </section>
+
+      <section class="comments">
+        <h2>Comments</h2>
+
+        <form id="comment-form">
+          <label>
+            Author
+            <input id="author" type="text" value="Anonymous" required />
+          </label>
+          <p id="placement-status" class="placement-status">No placement selected. Click on the PDF.</p>
+          <input id="page" type="hidden" />
+          <input id="x" type="hidden" />
+          <input id="y" type="hidden" />
+          <label>
+            Comment
+            <textarea id="text" rows="4" required></textarea>
+          </label>
+          <button type="submit">Add Comment</button>
+        </form>
+
+        <label for="comment-filter">
+          Filter comments (contains)
+          <input id="comment-filter" type="search" placeholder="Type to filter..." />
+        </label>
+
+        <ul id="annotations"></ul>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

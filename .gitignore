@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+data/pdfs/*.tmp
+data/documents.json
+.DS_Store
